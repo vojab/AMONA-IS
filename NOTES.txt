@@ -1,0 +1,5 @@
+SCAFFOLDING COMMAND:
+php artisan infyom:scaffold ImportItem --fromTable --tableName=import_item
+
+CREATE MIGRATION:
+php artisan make:migration add_deleted_at_column_to_import_item

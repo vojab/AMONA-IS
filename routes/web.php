@@ -23,3 +23,15 @@ Route::get('/home', 'HomeController@index');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+
+Route::resource('importItems', 'ImportItemController');
+
+Route::resource('imports', 'ImportController');
+
+Route::resource('products', 'ProductController');
+
+Route::resource('importItems', 'ImportItemController');
+
+Route::resource('importItems', 'ImportItemController');
+
+Route::resource('imports', 'ImportController');
