@@ -35,3 +35,11 @@ Route::resource('importItems', 'ImportItemController');
 Route::resource('importItems', 'ImportItemController');
 
 Route::resource('imports', 'ImportController');
+
+Route::resource('customers', 'CustomerController');
+
+Route::resource('customers', 'CustomerController');
+
+Route::resource('customers', 'CustomerController');
+
+Route::resource('customers', 'CustomerController');

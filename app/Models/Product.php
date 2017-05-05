@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App\Models
  * @version April 30, 2017, 10:18 pm UTC
  */
-class Product extends Model
+class Product extends BaseModel
 {
     use SoftDeletes;
 
