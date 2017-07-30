@@ -38,3 +38,19 @@
     <a href="{!! route('customers.index') !!}"><i class="fa fa-edit"></i><span>Customers</span></a>
 </li>
 
+<li class="{{ Request::is('taxes*') ? 'active' : '' }}">
+    <a href="{!! route('taxes.index') !!}"><i class="fa fa-edit"></i><span>Taxes</span></a>
+</li>
+
+<li class="{{ Request::is('invoices*') ? 'active' : '' }}">
+    <a href="{!! route('invoices.index') !!}"><i class="fa fa-edit"></i><span>Invoices</span></a>
+</li>
+
+<li class="{{ Request::is('invoiceItems*') ? 'active' : '' }}">
+    <a href="{!! route('invoiceItems.index') !!}"><i class="fa fa-edit"></i><span>InvoiceItems</span></a>
+</li>
+
+<li class="{{ Request::is('invoiceItems*') ? 'active' : '' }}">
+    <a href="{!! route('invoiceItems.index') !!}"><i class="fa fa-edit"></i><span>InvoiceItems</span></a>
+</li>
+

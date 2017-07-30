@@ -24,22 +24,20 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('importItems', 'ImportItemController');
-
 Route::resource('imports', 'ImportController');
 
 Route::resource('products', 'ProductController');
 
 Route::resource('importItems', 'ImportItemController');
 
-Route::resource('importItems', 'ImportItemController');
-
 Route::resource('imports', 'ImportController');
 
 Route::resource('customers', 'CustomerController');
 
-Route::resource('customers', 'CustomerController');
+Route::resource('taxes', 'TaxController');
 
-Route::resource('customers', 'CustomerController');
+Route::resource('invoices', 'InvoiceController');
 
-Route::resource('customers', 'CustomerController');
+Route::resource('invoiceItems', 'InvoiceItemController');
+
+Route::get('invoiceItemsByInvoiceId/{invoiceId}', 'InvoiceItemController@showInvoiceItemsByInvoiceId');

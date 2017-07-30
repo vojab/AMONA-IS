@@ -54,7 +54,7 @@ class Product extends BaseModel
         
     ];
 
-    public function importItems()
+    public function importItem()
     {
         return $this->belongsTo('App\ImportItem');
     }

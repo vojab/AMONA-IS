@@ -52,5 +52,13 @@ class ImportItem extends BaseModel
         
     ];
 
-    
+    public function import()
+    {
+        return $this->belongsTo('App\Import');
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
 }

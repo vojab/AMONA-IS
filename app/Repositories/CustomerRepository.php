@@ -34,4 +34,9 @@ class CustomerRepository extends BaseRepository
     {
         return Customer::class;
     }
+
+    public static function getCustomersForDropDown()
+    {
+        return Customer::pluck('name', 'id')->toArray();
+    }
 }

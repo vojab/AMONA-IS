@@ -6,15 +6,15 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Import
+ * Class InvoiceItem
  * @package App\Models
- * @version April 30, 2017, 11:10 pm UTC
+ * @version July 30, 2017, 6:49 pm UTC
  */
-class Import extends BaseModel
+class InvoiceItem extends Model
 {
     use SoftDeletes;
 
-    public $table = 'import';
+    public $table = 'invoice_item';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -25,8 +25,10 @@ class Import extends BaseModel
 
     public $fillable = [
         'uuid',
-        'name',
-        'description'
+        'invoice_id',
+        'product_id',
+        'quantity',
+        'price'
     ];
 
     /**
@@ -37,8 +39,10 @@ class Import extends BaseModel
     protected $casts = [
         'id' => 'integer',
         'uuid' => 'string',
-        'name' => 'string',
-        'description' => 'string'
+        'invoice_id' => 'integer',
+        'product_id' => 'integer',
+        'quantity' => 'integer',
+        'price' => 'float'
     ];
 
     /**
@@ -50,8 +54,5 @@ class Import extends BaseModel
         
     ];
 
-    public function importItems()
-    {
-        return $this->hasMany('App\ImportItem');
-    }
+    
 }

@@ -6,15 +6,15 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Import
+ * Class Tax
  * @package App\Models
- * @version April 30, 2017, 11:10 pm UTC
+ * @version July 29, 2017, 10:11 pm UTC
  */
-class Import extends BaseModel
+class Tax extends Model
 {
     use SoftDeletes;
 
-    public $table = 'import';
+    public $table = 'tax';
     
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
@@ -24,9 +24,9 @@ class Import extends BaseModel
 
 
     public $fillable = [
-        'uuid',
         'name',
-        'description'
+        'description',
+        'percentage'
     ];
 
     /**
@@ -36,9 +36,9 @@ class Import extends BaseModel
      */
     protected $casts = [
         'id' => 'integer',
-        'uuid' => 'string',
         'name' => 'string',
-        'description' => 'string'
+        'description' => 'string',
+        'percentage' => 'float'
     ];
 
     /**
@@ -50,8 +50,8 @@ class Import extends BaseModel
         
     ];
 
-    public function importItems()
+    public function invoice()
     {
-        return $this->hasMany('App\ImportItem');
+        return $this->belongsTo('App\Invoice');
     }
 }

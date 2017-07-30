@@ -25,4 +25,16 @@ class ProductRepository extends BaseRepository
     {
         return Product::class;
     }
+
+    public static function getProductsForDropDown()
+    {
+        $products = Product::all();
+        $productsArrayForDropDown = array();
+
+        foreach ($products as $product) {
+            $productsArrayForDropDown[$product->id] = $product->code . ' | ' . $product->name;
+        }
+
+        return $productsArrayForDropDown;
+    }
 }
