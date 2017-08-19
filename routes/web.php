@@ -41,3 +41,5 @@ Route::resource('invoices', 'InvoiceController');
 Route::resource('invoiceItems', 'InvoiceItemController');
 
 Route::get('invoiceItemsByInvoiceId/{invoiceId}', 'InvoiceItemController@showInvoiceItemsByInvoiceId');
+
+Route::get('/warehouse', 'WarehouseController@index');

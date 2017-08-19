@@ -24,4 +24,14 @@ class ImportItemRepository extends BaseRepository
     {
         return ImportItem::class;
     }
+
+    public static function getImportItems()
+    {
+        return ImportItem::all();
+    }
+
+    public static function getImportItemQuantity($productId)
+    {
+        return ImportItem::where('product_id', $productId)->sum('quantity');
+    }
 }

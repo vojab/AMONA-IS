@@ -26,6 +26,11 @@ class ProductRepository extends BaseRepository
         return Product::class;
     }
 
+    public static function getProducts()
+    {
+        return Product::all();
+    }
+
     public static function getProductsForDropDown()
     {
         $products = Product::all();

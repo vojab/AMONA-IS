@@ -25,4 +25,14 @@ class InvoiceItemRepository extends BaseRepository
     {
         return InvoiceItem::class;
     }
+
+    public static function getInvoiceItems()
+    {
+        return InvoiceItem::all();
+    }
+
+    public static function getInvoiceItemQuantity($productId)
+    {
+        return InvoiceItem::where('product_id', $productId)->sum('quantity');
+    }
 }
