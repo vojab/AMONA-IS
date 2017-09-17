@@ -1,4 +1,4 @@
-<li class="{{ Request::is('warehouse') ? 'active' : '' }}">
+<li class="{{ (Request::is('warehouse') || Request::is('landing')) ? 'active' : '' }}">
     <a href="{!! route('warehouse') !!}"><i class="fa fa-edit"></i><span>Warehouse</span></a>
 </li>
 

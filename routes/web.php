@@ -19,13 +19,17 @@ Auth::routes();
 
 // Landing
 
-Route::get('/home', [
-    'as' => 'home',
-    'uses' => 'HomeController@index']);
+//Route::get('/home', [
+//    'as' => 'home',
+//    'uses' => 'HomeController@index']);
 
 Route::get('/', [
     'as' => 'landing',
-    'uses' => 'WarehouseController@index'])->middleware('auth');
+//    'uses' => 'WarehouseController@index'],
+    function () {
+        return redirect('/warehouse');
+    }]
+)->middleware('auth');
 
 // Warehouse
 

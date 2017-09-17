@@ -53,6 +53,7 @@ class ImportItem extends BaseModel
         'import_id' => 'required|integer',
         'product_id' => 'required|integer',
         'quantity' => 'required|numeric|min:1',
+        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
     ];
 
     public function import()

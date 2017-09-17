@@ -55,7 +55,7 @@ class Invoice extends Model
     public static $rules = [
         'uuid' => 'required',
         'name' => 'required|string',
-        'description' => 'string',
+        'description' => 'string|nullable',
         'customer_id' => 'integer',
         'tax_id' => 'integer',
         'discount' => 'digits_between:0,100',

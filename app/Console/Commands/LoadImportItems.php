@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
-use App\Import;
-use App\ImportItem;
-use App\Product;
+use App\Models\Import;
+use App\Models\ImportItem;
+use App\Models\Product;
 use Illuminate\Console\Command;
 
 class LoadImportItems extends SpreadsheetLoader
@@ -19,6 +19,8 @@ class LoadImportItems extends SpreadsheetLoader
     {
         $import = new Import();
         $import->uuid = $this->getUUID();
+        $import->name = $this->argument('name');
+        $import->description = "";
         $import->save();
         $this->import = $import;
 
@@ -44,11 +46,27 @@ class LoadImportItems extends SpreadsheetLoader
         }
 
         $productCode = $record['code'];
+        $productName = $record['name'];
         $product = Product::where('code', $productCode)->first();
         if (!isset($product->id)) {
-            $this->import->delete();
-            $this->info("Product with code $productCode cannot be found");
-            return;
+
+            $this->info("Product with code #$productCode and name #$productName does not exists in system");
+            if ($this->confirm('Do you want to create and add new product ?')) {
+
+                $product = new Product();
+                $product->uuid = $this->getUUID();
+                $product->code = $productCode;
+                $product->name = utf8_encode($productName);
+                $product->description = "";
+                $product->unit = "kom.";
+                $product->save();
+
+            } else {
+
+                $this->import->delete();
+                $this->info("Product with code $productCode cannot be found");
+                return;
+            }
         }
 
         $importItem = new ImportItem();
@@ -56,6 +74,7 @@ class LoadImportItems extends SpreadsheetLoader
         $importItem->import_id = $this->import->id;
         $importItem->product_id = $product->id;
         $importItem->quantity = $record['quantity'];
+        $importItem->price = floatval(str_replace(',', '.', $record['price']));
 
         $importItem->save();
     }

@@ -49,7 +49,7 @@ class Import extends BaseModel
     public static $rules = [
         'uuid' => 'required',
         'name' => 'required|string',
-        'description' => 'string',
+        'description' => 'string|nullable',
     ];
 
     public function importItems()

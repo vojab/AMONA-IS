@@ -54,7 +54,7 @@ class Product extends BaseModel
         'uuid' => 'required',
         'code' => 'required|alpha_dash',
         'name' => 'required|string',
-        'description' => 'string',
+        'description' => 'string|nullable',
         'unit' => 'string',
     ];
 

@@ -114,7 +114,8 @@ abstract class SpreadsheetLoader extends Command
     protected function getArguments()
     {
         return array(
-            array('file', InputArgument::REQUIRED, null, null)
+            array('file', InputArgument::REQUIRED, null, null),
+            array('name', InputArgument::REQUIRED, null, null)
         );
     }
 }

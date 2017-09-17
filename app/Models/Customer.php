@@ -71,17 +71,17 @@ class Customer extends Model
     public static $rules = [
         'uuid' => 'required',
         'name' => 'required|string',
-        'address' => 'string',
-        'city' => 'string',
+        'address' => 'string|nullable',
+        'city' => 'string|nullable',
         'post_code' => 'numeric',
-        'state' => 'string',
-        'country' => 'string',
+        'state' => 'string|nullable',
+        'country' => 'string|nullable',
 //        'phone_number_1' => '',
 //        'phone_number_2' => '',
 //        'fax' => '',
         'email1' => 'email',
         'email2' => 'email',
-        'web_address' => 'url',
+        'web_address' => 'string|nullable',
     ];
 
     

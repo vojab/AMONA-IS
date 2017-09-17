@@ -36,6 +36,7 @@ class ImportItemDataTable extends DataTable
                 'product.code as product_code',
                 'product.name as product_name',
                 'import_item.quantity as quantity',
+                'import_item.price as price',
             ])
             ->join('product', 'import_item.product_id', '=', 'product.id')
             ->join('import', 'import_item.import_id', '=', 'import.id');
@@ -89,7 +90,8 @@ class ImportItemDataTable extends DataTable
         return [
             'product_code' => ['name' => 'product_code'],
             'product_name' => ['name' => 'product_name'],
-            'quantity' => ['name' => 'quantity', 'data' => 'quantity']
+            'quantity' => ['name' => 'quantity', 'data' => 'quantity'],
+            'price' => ['name' => 'price', 'data' => 'price']
         ];
     }
 
