@@ -17,8 +17,8 @@ Auth::routes();
 //    return view('welcome');
 //});
 
-Route::get('/', 'HomeController@index')->middleware('auth');
-Route::get('/home', 'HomeController@index')->middleware('auth');
+Route::get('/', 'WarehouseController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index');
 
 Route::get('invoiceItemsByInvoiceId/{invoiceId}', 'InvoiceItemController@showInvoiceItemsByInvoiceId')->middleware('auth');
 
