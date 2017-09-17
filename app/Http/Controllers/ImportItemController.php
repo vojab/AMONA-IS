@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateImportItemRequest;
 use App\Http\Requests\UpdateImportItemRequest;
 use App\Repositories\ImportItemRepository;
+use App\Repositories\ImportRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -14,13 +15,15 @@ use Response;
 class ImportItemController extends AppBaseController
 {
     /** @var  ImportItemRepository */
+    private $importRepository;
     private $importItemRepository;
 
-    public function __construct(ImportItemRepository $importItemRepo)
+    public function __construct(ImportItemRepository $importItemRepository, ImportRepository $importRepository)
     {
         $this->middleware('auth');
 
-        $this->importItemRepository = $importItemRepo;
+        $this->importRepository = $importRepository;
+        $this->importItemRepository = $importItemRepository;
     }
 
     /**
@@ -29,9 +32,22 @@ class ImportItemController extends AppBaseController
      * @param ImportItemDataTable $importItemDataTable
      * @return Response
      */
-    public function index(ImportItemDataTable $importItemDataTable)
+    public function index(ImportItemDataTable $importItemDataTable, $importId)
     {
-        return $importItemDataTable->render('import_items.index');
+        $import = $this->importRepository->findWithoutFail($importId);
+
+        if (empty($import)) {
+            Flash::error('Import not found');
+
+            return redirect(route('imports.index'));
+        }
+
+        return $importItemDataTable->render('import_items.index', ['import' => $import]);
+    }
+
+    public function showImportItemsByImportId($importId, ImportItemDataTable $importItemDataTable)
+    {
+        return $this->index($importItemDataTable, $importId);
     }
 
     /**

@@ -72,6 +72,7 @@ class InvoiceDataTable extends DataTable
     private function getColumns()
     {
         return [
+            'id' => ['name' => 'id', 'data' => 'id'],
             'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
             'name' => ['name' => 'name', 'data' => 'name'],
             'description' => ['name' => 'description', 'data' => 'description'],

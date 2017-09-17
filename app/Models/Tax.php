@@ -52,6 +52,6 @@ class Tax extends Model
 
     public function invoice()
     {
-        return $this->belongsTo('App\Invoice');
+        return $this->belongsTo('App\Models\Invoice');
     }
 }

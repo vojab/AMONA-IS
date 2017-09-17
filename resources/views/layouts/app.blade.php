@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.3/css/skins/_all-skins.min.css">
 
+    <link rel="stylesheet" type="text/css" href="/css/amona.css">
+
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 
@@ -25,7 +27,7 @@
 
             <!-- Logo -->
             <a href="#" class="logo">
-                <b>AmonaIS</b>
+                <b>Amona-IS</b>
             </a>
 
             <!-- Header Navbar -->

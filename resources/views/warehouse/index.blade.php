@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <div class="row">
+    <div class="row warehouse-header">
 
         <div class="col-md-1">#</div>
         <div class="col-md-2">Product Code</div>
@@ -17,7 +17,7 @@
 
     @foreach($warehouseDataArray as $key => $warehouseDataItem)
 
-        <div class="row">
+        <div class="row warehouse-item">
 
             <div class="col-md-1">
 

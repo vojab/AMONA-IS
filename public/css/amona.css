@@ -1,0 +1,29 @@
+.warehouse-item:nth-child(odd) {
+    background: lightgray;
+}
+
+.warehouse-item {
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px 0 1px 0;
+    border-color: darkgrey;
+}
+
+.warehouse-header {
+    font-size: 12pt;
+    font-weight: bold;
+    padding: 5px;
+    background: lightgrey;
+    border-bottom-style: solid;
+    border-width: medium;
+    border-color: darkgray;
+}
+
+.data-table-header-title {
+    border-radius: 3px;
+    border-bottom: 3px solid #3c8dbc;
+}
+
+.data-table-header-info {
+    margin-top: 10px;
+}

@@ -1,6 +1,6 @@
 {!! Form::open(['route' => ['invoices.destroy', $id], 'method' => 'delete']) !!}
 <div class='btn-group'>
-    <a href="{{ route('invoices.show', $id) }}" class='btn btn-default btn-xs'>
+    <a href="{{ route('invoiceItemsByInvoiceId', $id) }}" class='btn btn-default btn-xs'>
         <i class="glyphicon glyphicon-eye-open"></i>
     </a>
     <a href="{{ route('invoices.edit', $id) }}" class='btn btn-default btn-xs'>

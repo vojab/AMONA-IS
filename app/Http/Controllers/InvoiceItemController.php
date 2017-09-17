@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Requests\CreateInvoiceItemRequest;
 use App\Http\Requests\UpdateInvoiceItemRequest;
 use App\Repositories\InvoiceItemRepository;
+use App\Repositories\InvoiceRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
@@ -15,13 +16,15 @@ use Response;
 class InvoiceItemController extends AppBaseController
 {
     /** @var  InvoiceItemRepository */
+    private $invoiceRepository;
     private $invoiceItemRepository;
 
-    public function __construct(InvoiceItemRepository $invoiceItemRepo)
+    public function __construct(InvoiceItemRepository $invoiceItemRepository, InvoiceRepository $invoiceRepository)
     {
         $this->middleware('auth');
 
-        $this->invoiceItemRepository = $invoiceItemRepo;
+        $this->invoiceRepository = $invoiceRepository;
+        $this->invoiceItemRepository = $invoiceItemRepository;
     }
 
     /**
@@ -30,12 +33,19 @@ class InvoiceItemController extends AppBaseController
      * @param InvoiceItemDataTable $invoiceItemDataTable
      * @return Response
      */
-    public function index(InvoiceItemDataTable $invoiceItemDataTable, $invoiceId = null)
+    public function index(InvoiceItemDataTable $invoiceItemDataTable, $invoiceId)
     {
-        return $invoiceItemDataTable->render('invoice_items.index');
+        $invoice = $this->invoiceRepository->findWithoutFail($invoiceId);
+
+        if (empty($invoice)) {
+            Flash::error('invoice not found');
+
+            return redirect(route('invoices.index'));
+        }
+        return $invoiceItemDataTable->render('invoice_items.index', ['invoice' => $invoice]);
     }
 
-    public function showInvoiceItemsByInvoiceId(Request $request, $invoiceId, InvoiceItemDataTable $invoiceItemDataTable)
+    public function showInvoiceItemsByInvoiceId($invoiceId, InvoiceItemDataTable $invoiceItemDataTable)
     {
         return $this->index($invoiceItemDataTable, $invoiceId);
     }
@@ -48,6 +58,19 @@ class InvoiceItemController extends AppBaseController
     public function create()
     {
         return view('invoice_items.create');
+    }
+
+    public function createInvoiceItem($invoiceId)
+    {
+        $invoice = $this->invoiceRepository->findWithoutFail($invoiceId);
+
+        if (empty($invoice)) {
+            Flash::error('invoice not found');
+
+            return redirect(route('invoices.index'));
+        }
+
+        return view('invoice_items.create', ['invoice' => $invoice]);
     }
 
     /**
@@ -65,7 +88,7 @@ class InvoiceItemController extends AppBaseController
 
         Flash::success('Invoice Item saved successfully.');
 
-        return redirect(route('invoiceItems.index'));
+        return redirect(route('invoiceItemsByInvoiceId', ['invoiceId' => $invoiceItem->invoice->id]));
     }
 
     /**
@@ -143,6 +166,7 @@ class InvoiceItemController extends AppBaseController
     public function destroy($id)
     {
         $invoiceItem = $this->invoiceItemRepository->findWithoutFail($id);
+        $invoiceId = $invoiceItem->invoice->id;
 
         if (empty($invoiceItem)) {
             Flash::error('Invoice Item not found');
@@ -154,6 +178,6 @@ class InvoiceItemController extends AppBaseController
 
         Flash::success('Invoice Item deleted successfully.');
 
-        return redirect(route('invoiceItems.index'));
+        return redirect(route('invoiceItemsByInvoiceId', ['invoiceId' => $invoiceId]));
     }
 }

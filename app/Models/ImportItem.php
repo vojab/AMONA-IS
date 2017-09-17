@@ -54,11 +54,11 @@ class ImportItem extends BaseModel
 
     public function import()
     {
-        return $this->belongsTo('App\Import');
+        return $this->belongsTo('App\Models\Import');
     }
 
     public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->hasMany('App\Models\Product');
     }
 }

@@ -17,25 +17,54 @@ Auth::routes();
 //    return view('welcome');
 //});
 
-Route::get('/', 'HomeController@index')->middleware('auth');
-Route::get('/home', 'HomeController@index')->middleware('auth');
+// Landing
 
-Route::get('invoiceItemsByInvoiceId/{invoiceId}', 'InvoiceItemController@showInvoiceItemsByInvoiceId')->middleware('auth');
+Route::get('/home', [
+    'as' => 'home',
+    'uses' => 'HomeController@index']);
 
-Route::get('/warehouse', 'WarehouseController@index')->middleware('auth');
+Route::get('/', [
+    'as' => 'landing',
+    'uses' => 'WarehouseController@index'])->middleware('auth');
 
-Route::resource('imports', 'ImportController');
+// Warehouse
 
-Route::resource('products', 'ProductController');
+Route::get('/warehouse', [
+    'as' => 'warehouse',
+    'uses' => 'WarehouseController@index'])->middleware('auth');
 
-Route::resource('importItems', 'ImportItemController');
-
-Route::resource('imports', 'ImportController');
+// Customers
 
 Route::resource('customers', 'CustomerController');
 
+// Products
+
+Route::resource('products', 'ProductController');
+
+// Taxes
+
 Route::resource('taxes', 'TaxController');
+
+// Imports
+
+Route::resource('imports', 'ImportController');
+
+Route::resource('importItems', 'ImportItemController');
+
+Route::get('importItemsByImportId/{invoiceId}', [
+    'as' => 'importItemsByImportId',
+    'uses' => 'ImportItemController@showImportItemsByImportId'])->middleware('auth');
+
+// Invoices
 
 Route::resource('invoices', 'InvoiceController');
 
 Route::resource('invoiceItems', 'InvoiceItemController');
+
+Route::get('invoiceItemsByInvoiceId/{invoiceId}', [
+    'as' => 'invoiceItemsByInvoiceId',
+    'uses' => 'InvoiceItemController@showInvoiceItemsByInvoiceId'])->middleware('auth');
+
+Route::get('createInvoiceItem/{invoiceId}', [
+    'as' => 'createInvoiceItem',
+    'uses' => 'InvoiceItemController@createInvoiceItem'])->middleware('auth');

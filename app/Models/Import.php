@@ -52,6 +52,6 @@ class Import extends BaseModel
 
     public function importItems()
     {
-        return $this->hasMany('App\ImportItem');
+        return $this->hasMany('App\Models\ImportItem');
     }
 }

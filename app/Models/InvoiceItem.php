@@ -54,5 +54,9 @@ class InvoiceItem extends Model
         
     ];
 
+    public function invoice()
+    {
+        return $this->belongsTo('App\Models\Invoice');
+    }
     
 }
