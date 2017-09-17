@@ -11,18 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Auth::routes();
+Route::get('/', 'HomeController@index')->middleware('auth');
+Route::get('/home', 'HomeController@index')->middleware('auth');
 
-Route::get('/home', 'HomeController@index');
+Route::get('invoiceItemsByInvoiceId/{invoiceId}', 'InvoiceItemController@showInvoiceItemsByInvoiceId')->middleware('auth');
+
+Route::get('/warehouse', 'WarehouseController@index')->middleware('auth');
 
 Route::resource('imports', 'ImportController');
 
@@ -39,7 +39,3 @@ Route::resource('taxes', 'TaxController');
 Route::resource('invoices', 'InvoiceController');
 
 Route::resource('invoiceItems', 'InvoiceItemController');
-
-Route::get('invoiceItemsByInvoiceId/{invoiceId}', 'InvoiceItemController@showInvoiceItemsByInvoiceId');
-
-Route::get('/warehouse', 'WarehouseController@index');

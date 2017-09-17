@@ -18,6 +18,8 @@ class InvoiceController extends AppBaseController
 
     public function __construct(InvoiceRepository $invoiceRepo)
     {
+        $this->middleware('auth');
+
         $this->invoiceRepository = $invoiceRepo;
     }
 

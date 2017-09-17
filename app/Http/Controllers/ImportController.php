@@ -18,6 +18,8 @@ class ImportController extends AppBaseController
 
     public function __construct(ImportRepository $importRepo)
     {
+        $this->middleware('auth');
+
         $this->importRepository = $importRepo;
     }
 

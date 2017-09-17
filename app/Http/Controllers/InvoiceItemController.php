@@ -19,6 +19,8 @@ class InvoiceItemController extends AppBaseController
 
     public function __construct(InvoiceItemRepository $invoiceItemRepo)
     {
+        $this->middleware('auth');
+
         $this->invoiceItemRepository = $invoiceItemRepo;
     }
 

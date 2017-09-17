@@ -18,6 +18,8 @@ class TaxController extends AppBaseController
 
     public function __construct(TaxRepository $taxRepo)
     {
+        $this->middleware('auth');
+
         $this->taxRepository = $taxRepo;
     }
 

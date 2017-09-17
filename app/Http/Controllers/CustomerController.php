@@ -18,6 +18,8 @@ class CustomerController extends AppBaseController
 
     public function __construct(CustomerRepository $customerRepo)
     {
+        $this->middleware('auth');
+
         $this->customerRepository = $customerRepo;
     }
 
