@@ -108,6 +108,6 @@ return [
     |
     */
 
-    'disable_auth_actions' => true,
+    'disable_auth_actions' => false,
 
 ];
