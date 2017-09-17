@@ -42,6 +42,7 @@ class InvoiceItemController extends AppBaseController
 
             return redirect(route('invoices.index'));
         }
+        $invoiceItemDataTable->invoiceId = $invoice->id;
         return $invoiceItemDataTable->render('invoice_items.index', ['invoice' => $invoice]);
     }
 
@@ -121,6 +122,7 @@ class InvoiceItemController extends AppBaseController
     public function edit($id)
     {
         $invoiceItem = $this->invoiceItemRepository->findWithoutFail($id);
+        $invoice = $invoiceItem->invoice;
 
         if (empty($invoiceItem)) {
             Flash::error('Invoice Item not found');
@@ -128,7 +130,11 @@ class InvoiceItemController extends AppBaseController
             return redirect(route('invoiceItems.index'));
         }
 
-        return view('invoice_items.edit')->with('invoiceItem', $invoiceItem);
+        return view('invoice_items.edit')
+            ->with([
+                'invoice' => $invoice,
+                'invoiceItem' => $invoiceItem,
+            ]);
     }
 
     /**
@@ -153,7 +159,7 @@ class InvoiceItemController extends AppBaseController
 
         Flash::success('Invoice Item updated successfully.');
 
-        return redirect(route('invoiceItems.index'));
+        return redirect(route('invoiceItemsByInvoiceId', $invoiceItem->invoice->id));
     }
 
     /**

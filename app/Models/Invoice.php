@@ -53,7 +53,12 @@ class Invoice extends Model
      * @var array
      */
     public static $rules = [
-        
+        'uuid' => 'required',
+        'name' => 'required|string',
+        'description' => 'string',
+        'customer_id' => 'integer',
+        'tax_id' => 'integer',
+        'discount' => 'digits_between:0,100',
     ];
 
     public function invoiceItems()

@@ -49,7 +49,10 @@ class ImportItem extends BaseModel
      * @var array
      */
     public static $rules = [
-        
+        'uuid' => 'required',
+        'import_id' => 'required|integer',
+        'product_id' => 'required|integer',
+        'quantity' => 'required|numeric|min:1',
     ];
 
     public function import()

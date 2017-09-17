@@ -69,7 +69,19 @@ class Customer extends Model
      * @var array
      */
     public static $rules = [
-        
+        'uuid' => 'required',
+        'name' => 'required|string',
+        'address' => 'string',
+        'city' => 'string',
+        'post_code' => 'numeric',
+        'state' => 'string',
+        'country' => 'string',
+//        'phone_number_1' => '',
+//        'phone_number_2' => '',
+//        'fax' => '',
+        'email1' => 'email',
+        'email2' => 'email',
+        'web_address' => 'url',
     ];
 
     

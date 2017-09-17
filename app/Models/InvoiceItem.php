@@ -51,7 +51,11 @@ class InvoiceItem extends Model
      * @var array
      */
     public static $rules = [
-        
+        'uuid' => 'required',
+        'invoice_id' => 'required|integer',
+        'product_id' => 'required|integer',
+        'quantity' => 'required|numeric|min:1',
+        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
     ];
 
     public function invoice()

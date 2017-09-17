@@ -4,6 +4,7 @@ namespace App\DataTables;
 
 use App\Models\InvoiceItem;
 use Form;
+use Illuminate\Support\Facades\DB;
 use Yajra\Datatables\Services\DataTable;
 
 class InvoiceItemDataTable extends DataTable

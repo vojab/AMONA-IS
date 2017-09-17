@@ -8,6 +8,7 @@ use Yajra\Datatables\Services\DataTable;
 
 class ImportItemDataTable extends DataTable
 {
+    public $importId = null;
 
     /**
      * @return \Illuminate\Http\JsonResponse
@@ -38,6 +39,10 @@ class ImportItemDataTable extends DataTable
             ])
             ->join('product', 'import_item.product_id', '=', 'product.id')
             ->join('import', 'import_item.import_id', '=', 'import.id');
+
+        if ($this->importId) {
+            $importItems = $importItems->where('import_item.import_id', $this->importId);
+        }
 
         return $importItems;
     }

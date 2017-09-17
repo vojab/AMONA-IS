@@ -47,7 +47,9 @@ class Tax extends Model
      * @var array
      */
     public static $rules = [
-        
+        'name' => 'required|string',
+        'description' => 'string',
+        'percentage' => 'digits_between:0,100',
     ];
 
     public function invoice()

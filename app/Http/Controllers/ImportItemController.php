@@ -42,6 +42,7 @@ class ImportItemController extends AppBaseController
             return redirect(route('imports.index'));
         }
 
+        $importItemDataTable->importId = $importId;
         return $importItemDataTable->render('import_items.index', ['import' => $import]);
     }
 

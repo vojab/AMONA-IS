@@ -51,7 +51,11 @@ class Product extends BaseModel
      * @var array
      */
     public static $rules = [
-        
+        'uuid' => 'required',
+        'code' => 'required|alpha_dash',
+        'name' => 'required|string',
+        'description' => 'string',
+        'unit' => 'string',
     ];
 
     public function importItem()
