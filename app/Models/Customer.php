@@ -70,18 +70,19 @@ class Customer extends Model
      */
     public static $rules = [
         'uuid' => 'required',
-        'name' => 'required|string',
-        'address' => 'string|nullable',
-        'city' => 'string|nullable',
-        'post_code' => 'numeric',
-        'state' => 'string|nullable',
-        'country' => 'string|nullable',
-//        'phone_number_1' => '',
-//        'phone_number_2' => '',
-//        'fax' => '',
+        'name' => 'required|string|size:64',
+        'oib' => 'string|size:13',
+        'address' => 'string|size:256|nullable',
+        'city' => 'string|size:256|nullable',
+        'post_code' => 'string|size:16|nullable',
+        'state' => 'string|size:256|nullable',
+        'country' => 'string|size:256|nullable',
+        'phone_number_1' => 'string|size:256|nullable',
+        'phone_number_2' => 'string|size:256|nullable',
+        'fax' => 'string|size:256|nullable',
         'email1' => 'email',
         'email2' => 'email',
-        'web_address' => 'string|nullable',
+        'web_address' => 'string|size:128|nullable',
     ];
 
     

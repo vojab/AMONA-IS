@@ -81,10 +81,10 @@ class CustomerDataTable extends DataTable
             'state' => ['name' => 'state', 'data' => 'state'],
             'country' => ['name' => 'country', 'data' => 'country'],
             'phone_number_1' => ['name' => 'phone_number_1', 'data' => 'phone_number_1'],
-            'phone_number_2' => ['name' => 'phone_number_2', 'data' => 'phone_number_2'],
+//            'phone_number_2' => ['name' => 'phone_number_2', 'data' => 'phone_number_2'],
             'fax' => ['name' => 'fax', 'data' => 'fax'],
             'email_1' => ['name' => 'email_1', 'data' => 'email_1'],
-            'email_2' => ['name' => 'email_2', 'data' => 'email_2'],
+//            'email_2' => ['name' => 'email_2', 'data' => 'email_2'],
             'web_address' => ['name' => 'web_address', 'data' => 'web_address']
         ];
     }
