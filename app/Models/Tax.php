@@ -47,8 +47,8 @@ class Tax extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required|string',
-        'description' => 'string|nullable',
+        'name' => 'required|string|max:32',
+        'description' => 'string|nullable|max:256',
         'percentage' => 'digits_between:0,100',
     ];
 

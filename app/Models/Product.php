@@ -52,9 +52,9 @@ class Product extends BaseModel
      */
     public static $rules = [
         'uuid' => 'required',
-        'code' => 'required|alpha_dash',
-        'name' => 'required|string',
-        'description' => 'string|nullable',
+        'code' => 'required|alpha_dash|max:24',
+        'name' => 'required|string|max:255',
+        'description' => 'string||max:255|nullable',
         'unit' => 'string',
     ];
 

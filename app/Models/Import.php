@@ -48,8 +48,8 @@ class Import extends BaseModel
      */
     public static $rules = [
         'uuid' => 'required',
-        'name' => 'required|string',
-        'description' => 'string|nullable',
+        'name' => 'required|string|max:35',
+        'description' => 'string|max:255|nullable',
     ];
 
     public function importItems()

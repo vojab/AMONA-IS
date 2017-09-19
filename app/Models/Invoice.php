@@ -54,8 +54,8 @@ class Invoice extends Model
      */
     public static $rules = [
         'uuid' => 'required',
-        'name' => 'required|string',
-        'description' => 'string|nullable',
+        'name' => 'required|max:32|string',
+        'description' => 'string|max:256|nullable',
         'customer_id' => 'integer',
         'tax_id' => 'integer',
         'discount' => 'digits_between:0,100',
