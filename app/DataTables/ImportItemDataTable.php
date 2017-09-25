@@ -18,6 +18,7 @@ class ImportItemDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'import_items.datatables_actions')
+            ->skipPaging()
             ->make(true);
     }
 
@@ -32,6 +33,7 @@ class ImportItemDataTable extends DataTable
             ->select([
                 'import_item.id as id',
                 'import_item.uuid as uuid',
+                'import_item.order as order',
                 'import.name as import_name',
                 'product.code as product_code',
                 'product.name as product_name',
@@ -88,6 +90,7 @@ class ImportItemDataTable extends DataTable
     private function getColumns()
     {
         return [
+            'order' => ['name' => 'order'],
             'product_code' => ['name' => 'product_code'],
             'product_name' => ['name' => 'product_name'],
             'quantity' => ['name' => 'quantity', 'data' => 'quantity'],

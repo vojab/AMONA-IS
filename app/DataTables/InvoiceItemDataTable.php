@@ -19,6 +19,7 @@ class InvoiceItemDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'invoice_items.datatables_actions')
+            ->skipPaging()
             ->make(true);
     }
 
@@ -35,6 +36,7 @@ class InvoiceItemDataTable extends DataTable
             ->select([
                 'invoice_item.id as id',
                 'invoice_item.uuid as uuid',
+                'invoice_item.order as order',
                 'invoice_item.quantity as quantity',
                 'invoice_item.price as price',
                 'product.code as product_code',
@@ -94,6 +96,7 @@ class InvoiceItemDataTable extends DataTable
 //            'id' => ['name' => 'id', 'data' => 'id'],
 //            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
 //            'invoice_id' => ['name' => 'invoice_id', 'data' => 'invoice_id'],
+            'order' => ['name' => 'order'],
             'product_code' => ['name' => 'product_code'],
             'product_name' => ['name' => 'product_name'],
             'quantity' => ['name' => 'quantity', 'data' => 'quantity'],

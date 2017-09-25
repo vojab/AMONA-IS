@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Import;
 use App\Models\ImportItem;
 use App\Models\Product;
+use App\Repositories\ImportItemRepository;
 use Illuminate\Console\Command;
 
 class LoadImportItems extends SpreadsheetLoader
@@ -71,6 +72,7 @@ class LoadImportItems extends SpreadsheetLoader
 
         $importItem = new ImportItem();
         $importItem->uuid = $this->getUUID();
+        $importItem->order = ImportItemRepository::getNextOrderNumber($this->import->id);
         $importItem->import_id = $this->import->id;
         $importItem->product_id = $product->id;
         $importItem->quantity = $record['quantity'];

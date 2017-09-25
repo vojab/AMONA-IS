@@ -12,6 +12,7 @@ class ImportItemRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'uuid',
+        'order',
         'import_id',
         'product_id',
         'quantity'
@@ -33,5 +34,21 @@ class ImportItemRepository extends BaseRepository
     public static function getImportItemQuantity($productId)
     {
         return ImportItem::where('product_id', $productId)->sum('quantity');
+    }
+
+    public static function getNextOrderNumber($importId)
+    {
+        $orderNumber = ImportItem::where('import_id', $importId)->max('order');
+        return ++$orderNumber;
+    }
+
+    public static function reOrder($importId)
+    {
+        $importItems = ImportItem::where('import_id', $importId)->get();
+        foreach ($importItems as $key => $importItem) {
+
+            $importItem->order = ++$key;
+            $importItem->update();
+        }
     }
 }

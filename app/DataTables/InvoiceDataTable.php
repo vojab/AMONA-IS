@@ -17,6 +17,7 @@ class InvoiceDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'invoices.datatables_actions')
+            ->skipPaging()
             ->make(true);
     }
 
@@ -73,7 +74,7 @@ class InvoiceDataTable extends DataTable
     {
         return [
             'id' => ['name' => 'id', 'data' => 'id'],
-            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
+//            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
             'name' => ['name' => 'name', 'data' => 'name'],
             'description' => ['name' => 'description', 'data' => 'description'],
             'customer_id' => ['name' => 'customer_id', 'data' => 'customer_id'],

@@ -152,6 +152,7 @@
 
     <!-- Select2 Initialization -->
     <script src="/js/applySelect2.js"></script>
+    <script src="/js/datatable.js"></script>
 
     @yield('scripts')
 </body>

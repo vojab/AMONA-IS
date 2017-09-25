@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Repositories\ImportItemRepository;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,6 +26,7 @@ class ImportItem extends BaseModel
 
     public $fillable = [
         'uuid',
+        'order',
         'import_id',
         'product_id',
         'quantity'
@@ -38,6 +40,7 @@ class ImportItem extends BaseModel
     protected $casts = [
         'id' => 'integer',
         'uuid' => 'string',
+        'order' => 'integer',
         'import_id' => 'integer',
         'product_id' => 'integer',
         'quantity' => 'integer'
@@ -64,5 +67,12 @@ class ImportItem extends BaseModel
     public function products()
     {
         return $this->hasMany('App\Models\Product');
+    }
+
+    public function setOrderNumber()
+    {
+        $orderNumber = ImportItemRepository::getNextOrderNumber($this->import_id);
+        $this->order = $orderNumber;
+        $this->update();
     }
 }

@@ -17,6 +17,7 @@ class CustomerDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'customers.datatables_actions')
+            ->skipPaging()
             ->make(true);
     }
 
@@ -72,17 +73,17 @@ class CustomerDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
+//            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
             'name' => ['name' => 'name', 'data' => 'name'],
             'oib' => ['name' => 'oib', 'data' => 'oib'],
             'address' => ['name' => 'address', 'data' => 'address'],
             'city' => ['name' => 'city', 'data' => 'city'],
             'post_code' => ['name' => 'post_code', 'data' => 'post_code'],
-            'state' => ['name' => 'state', 'data' => 'state'],
+//            'state' => ['name' => 'state', 'data' => 'state'],
             'country' => ['name' => 'country', 'data' => 'country'],
             'phone_number_1' => ['name' => 'phone_number_1', 'data' => 'phone_number_1'],
 //            'phone_number_2' => ['name' => 'phone_number_2', 'data' => 'phone_number_2'],
-            'fax' => ['name' => 'fax', 'data' => 'fax'],
+//            'fax' => ['name' => 'fax', 'data' => 'fax'],
             'email_1' => ['name' => 'email_1', 'data' => 'email_1'],
 //            'email_2' => ['name' => 'email_2', 'data' => 'email_2'],
             'web_address' => ['name' => 'web_address', 'data' => 'web_address']

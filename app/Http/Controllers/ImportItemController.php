@@ -74,6 +74,10 @@ class ImportItemController extends AppBaseController
 
         $importItem = $this->importItemRepository->create($input);
 
+        // Set order number
+        $importItem->order = ImportItemRepository::getNextOrderNumber($importItem->import_id);
+        $importItem->update();
+
         Flash::success('Import Item saved successfully.');
 
         return redirect(route('importItems.index'));
@@ -154,6 +158,7 @@ class ImportItemController extends AppBaseController
     public function destroy($id)
     {
         $importItem = $this->importItemRepository->findWithoutFail($id);
+        $importId = $importItem->import_id;
 
         if (empty($importItem)) {
             Flash::error('Import Item not found');
@@ -162,6 +167,8 @@ class ImportItemController extends AppBaseController
         }
 
         $this->importItemRepository->delete($id);
+
+        ImportItemRepository::reOrder($importId);
 
         Flash::success('Import Item deleted successfully.');
 

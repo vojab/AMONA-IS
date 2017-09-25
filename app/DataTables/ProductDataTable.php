@@ -17,6 +17,7 @@ class ProductDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'products.datatables_actions')
+            ->skipPaging()
             ->make(true);
     }
 
@@ -72,10 +73,10 @@ class ProductDataTable extends DataTable
     private function getColumns()
     {
         return [
-            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
+//            'uuid' => ['name' => 'uuid', 'data' => 'uuid'],
             'code' => ['name' => 'code', 'data' => 'code'],
             'name' => ['name' => 'name', 'data' => 'name'],
-            'description' => ['name' => 'description', 'data' => 'description'],
+//            'description' => ['name' => 'description', 'data' => 'description'],
             'unit' => ['name' => 'unit', 'data' => 'unit']
         ];
     }

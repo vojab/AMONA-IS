@@ -87,6 +87,10 @@ class InvoiceItemController extends AppBaseController
 
         $invoiceItem = $this->invoiceItemRepository->create($input);
 
+        // Set order number
+        $invoiceItem->order = InvoiceItemRepository::getNextOrderNumber($invoiceItem->invoice_id);
+        $invoiceItem->update();
+
         Flash::success('Invoice Item saved successfully.');
 
         return redirect(route('invoiceItemsByInvoiceId', ['invoiceId' => $invoiceItem->invoice->id]));
@@ -181,6 +185,8 @@ class InvoiceItemController extends AppBaseController
         }
 
         $this->invoiceItemRepository->delete($id);
+
+        InvoiceItemRepository::reOrder($invoiceId);
 
         Flash::success('Invoice Item deleted successfully.');
 

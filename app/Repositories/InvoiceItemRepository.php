@@ -12,6 +12,7 @@ class InvoiceItemRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'uuid',
+        'order',
         'invoice_id',
         'product_id',
         'quantity',
@@ -34,5 +35,21 @@ class InvoiceItemRepository extends BaseRepository
     public static function getInvoiceItemQuantity($productId)
     {
         return InvoiceItem::where('product_id', $productId)->sum('quantity');
+    }
+
+    public static function getNextOrderNumber($invoiceId)
+    {
+        $orderNumber = InvoiceItem::where('invoice_id', $invoiceId)->max('order');
+        return ++$orderNumber;
+    }
+
+    public static function reOrder($invoiceId)
+    {
+        $invoiceItems = InvoiceItem::where('invoice_id', $invoiceId)->get();
+        foreach ($invoiceItems as $key => $invoiceItem) {
+
+            $invoiceItem->order = ++$key;
+            $invoiceItem->update();
+        }
     }
 }

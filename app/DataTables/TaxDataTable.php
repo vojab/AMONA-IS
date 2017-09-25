@@ -17,6 +17,7 @@ class TaxDataTable extends DataTable
         return $this->datatables
             ->eloquent($this->query())
             ->addColumn('action', 'taxes.datatables_actions')
+            ->skipPaging()
             ->make(true);
     }
 

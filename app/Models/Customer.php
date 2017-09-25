@@ -71,7 +71,7 @@ class Customer extends Model
     public static $rules = [
         'uuid' => 'required',
         'name' => 'required|string|max:64',
-        'oib' => 'string|size:13',
+        'oib' => 'string|min:11|max:13',
         'address' => 'string|max:256|nullable',
         'city' => 'string|max:256|nullable',
         'post_code' => 'string|max:16|nullable',

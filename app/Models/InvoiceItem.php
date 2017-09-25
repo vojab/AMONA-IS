@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Repositories\InvoiceItemRepository;
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -25,6 +26,7 @@ class InvoiceItem extends Model
 
     public $fillable = [
         'uuid',
+        'order',
         'invoice_id',
         'product_id',
         'quantity',
@@ -39,6 +41,7 @@ class InvoiceItem extends Model
     protected $casts = [
         'id' => 'integer',
         'uuid' => 'string',
+        'order' => 'integer',
         'invoice_id' => 'integer',
         'product_id' => 'integer',
         'quantity' => 'integer',
@@ -61,6 +64,13 @@ class InvoiceItem extends Model
     public function invoice()
     {
         return $this->belongsTo('App\Models\Invoice');
+    }
+
+    public function setOrderNumber()
+    {
+        $orderNumber = InvoiceItemRepository::getNextOrderNumber($this->invoice_id);
+        $this->order = $orderNumber;
+        $this->update();
     }
     
 }
