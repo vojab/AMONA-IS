@@ -39,6 +39,7 @@ class Warehouse extends Model
             $warehouseData->productId = $product->id;
             $warehouseData->productCode = $product->code;
             $warehouseData->productName = $product->name;
+            $warehouseData->productPrice = $product->price;
 
             $warehouseData->productImportItemQuantity = ImportItemRepository::getImportItemQuantity($product->id);
             $warehouseData->productInvoiceItemQuantity = InvoiceItemRepository::getInvoiceItemQuantity($product->id);

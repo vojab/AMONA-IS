@@ -77,7 +77,8 @@ class ProductDataTable extends DataTable
             'code' => ['name' => 'code', 'data' => 'code'],
             'name' => ['name' => 'name', 'data' => 'name'],
 //            'description' => ['name' => 'description', 'data' => 'description'],
-            'unit' => ['name' => 'unit', 'data' => 'unit']
+            'unit' => ['name' => 'unit', 'data' => 'unit'],
+            'price' => ['name' => 'price', 'data' => 'price']
         ];
     }
 

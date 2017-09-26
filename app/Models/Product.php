@@ -28,7 +28,8 @@ class Product extends BaseModel
         'code',
         'name',
         'description',
-        'unit'
+        'unit',
+        'price'
     ];
 
     /**
@@ -42,7 +43,8 @@ class Product extends BaseModel
         'code' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'unit' => 'string'
+        'unit' => 'string',
+        'price' => 'float'
     ];
 
     /**
@@ -56,6 +58,7 @@ class Product extends BaseModel
         'name' => 'required|string|max:255',
         'description' => 'string||max:255|nullable',
         'unit' => 'string',
+        'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
     ];
 
     public function importItem()

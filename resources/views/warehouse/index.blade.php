@@ -7,9 +7,11 @@
     <div class="row warehouse-header">
 
         <div class="col-md-1">#</div>
-        <div class="col-md-2">Product Code</div>
-        <div class="col-md-7">Product Name</div>
-        <div class="col-md-2">Quantity</div>
+        <div class="col-md-2">Code</div>
+        <div class="col-md-5">Name</div>
+        <div class="col-md-2">Price</div>
+        <div class="col-md-1">Qty</div>
+        <div class="col-md-1">St</div>
 
     </div>
 
@@ -25,24 +27,42 @@
 
             </div>
 
-                <div class="col-md-2">
+            <div class="col-md-2">
 
-                    {{ $warehouseDataItem->productCode }}
+                {{ $warehouseDataItem->productCode }}
 
-                </div>
+            </div>
 
-                <div class="col-md-7">
+            <div class="col-md-5">
 
-                    {{ $warehouseDataItem->productName }}
+                {{ $warehouseDataItem->productName }}
 
-                </div>
+            </div>
+
+            <div class="col-md-2">
+
+                {{ $warehouseDataItem->productPrice }}
+
+            </div>
 
 
-                <div class="col-md-2">
+            <div class="col-md-1">
 
-                    {{ $warehouseDataItem->totalQuantity }}
+                {{ $warehouseDataItem->totalQuantity }}
 
-                </div>
+            </div>
+
+            <div class="col-md-1">
+
+                @if($warehouseDataItem->totalQuantity > \Config::get('app.quantity_warning_offset'))
+                    <span class="glyphicon glyphicon-record green" aria-hidden="true"></span>
+                @elseif($warehouseDataItem->totalQuantity >= 0 && $warehouseDataItem->totalQuantity <= \Config::get('app.quantity_warning_offset'))
+                    <span class="glyphicon glyphicon-record orange" aria-hidden="true"></span>
+                @elseif($warehouseDataItem->totalQuantity < 0)
+                    <span class="glyphicon glyphicon-exclamation-sign red" aria-hidden="true"></span>
+                @endif
+
+            </div>
 
         </div>
 

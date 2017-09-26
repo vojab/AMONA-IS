@@ -27,3 +27,15 @@
 .data-table-header-info {
     margin-top: 10px;
 }
+
+.green {
+    color: green;
+}
+
+.orange {
+    color: orange;
+}
+
+.red {
+    color: red;
+}

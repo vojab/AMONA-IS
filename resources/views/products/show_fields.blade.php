@@ -34,6 +34,12 @@
     <p>{!! $product->unit !!}</p>
 </div>
 
+<!-- Price Field -->
+<div class="form-group">
+    {!! Form::label('price', 'Price:') !!}
+    <p>{!! $product->price !!}</p>
+</div>
+
 <!-- Created At Field -->
 <div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}

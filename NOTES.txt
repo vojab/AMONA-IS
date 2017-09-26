@@ -6,3 +6,6 @@ php artisan make:migration add_deleted_at_column_to_import_item
 
 IMPORT IMPORT ITEMS EXCEL FILE;
 php artisan load:import-items storage/import_items/import_item_01.xlsx Import_01
+
+IMPORT PRODUCTS FROM TSV TXT FILE:
+php artisan load:products storage/products/products_import.txt products
