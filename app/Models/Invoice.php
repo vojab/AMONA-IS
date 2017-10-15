@@ -22,6 +22,24 @@ class Invoice extends Model
 
     protected $dates = ['deleted_at'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        self::creating(function($invoice){
+            $invoice->date = self::convertDateFormat($invoice->date);
+        });
+
+        self::updating(function($invoice){
+            $invoice->date = self::convertDateFormat($invoice->date);
+        });
+    }
+
+    public static function convertDateFormat($date, $format = "Y-m-d")
+    {
+        $newDate = date($format, strtotime($date));
+        return $newDate;
+    }
 
     public $fillable = [
         'uuid',
@@ -46,7 +64,7 @@ class Invoice extends Model
         'customer_id' => 'integer',
         'tax_id' => 'integer',
         'discount' => 'float',
-        'date' => 'date'
+        //'date' => 'date'
     ];
 
     /**

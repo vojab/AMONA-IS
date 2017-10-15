@@ -11,13 +11,34 @@ $(document).ready(function() {
 
     $(".invoiceDate").datepicker({
         currentText: "Now",
-        dateFormat: "yy-mm-dd"
+        dateFormat: "dd.mm.yy"
     });
 
-    var today = getTodayDate();
-    $(".invoiceDate").val(today);
+    var invoiceDate = $(".invoiceDate").val();
+    console.log(invoiceDate);
+    if (!invoiceDate) {
+
+        var today = getTodayDate();
+        $(".invoiceDate").val(today);
+
+    } else {
+
+        var formattedInvoiceDate = formatInvoiceDate(invoiceDate);
+        $(".invoiceDate").val(formattedInvoiceDate);
+    }
 
 });
+
+var formatInvoiceDate = function(invoiceDate)
+{
+    var formattedInvoiceDate = invoiceDate.split('-');
+
+    var dd = formattedInvoiceDate[2];
+    var mm = formattedInvoiceDate[1];
+    var yyyy = formattedInvoiceDate[0];
+
+    return dd + '.' + mm + '.' + yyyy;
+};
 
 var getTodayDate = function()
 {
@@ -34,7 +55,8 @@ var getTodayDate = function()
         mm = '0' + mm;
     }
 
-    today = yyyy + '-' + mm + '-' + dd;
+    //today = yyyy + '-' + mm + '-' + dd;
+    today = dd + '.' + mm + '.' + yyyy;
 
     return today;
 };
