@@ -10,7 +10,8 @@ $(document).ready(function() {
     // Apply date selector and set date to Today
 
     $(".invoiceDate").datepicker({
-        currentText: "Now"
+        currentText: "Now",
+        dateFormat: "yy-mm-dd"
     });
 
     var today = getTodayDate();
