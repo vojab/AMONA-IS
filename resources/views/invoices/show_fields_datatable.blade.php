@@ -3,8 +3,7 @@
     <div class="row">
         <div class="col-md-3"><p><b>ID: </b>{!! $invoice->id !!}</p></div>
         <div class="col-md-3"><p><b>UUID: </b>{!! $invoice->uuid !!}</p></div>
-        <div class="col-md-3"><p><b>CREATED AT: </b>{!! $invoice->created_at !!}</p></div>
-        <div class="col-md-3"><p><b>UPDATED AT: </b>{!! $invoice->updated_at !!}</p></div>
+        <div class="col-md-3"><p><b>DATE: </b>{!! date('d.m.Y', strtotime($invoice->date)) !!}</p></div>
     </div>
 
     <div class="row">

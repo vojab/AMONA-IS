@@ -16,6 +16,12 @@
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
+<!-- French Name Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('french_name', 'French Name:') !!}
+    {!! Form::text('french_name', null, ['class' => 'form-control']) !!}
+</div>
+
 <!-- Description Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('description', 'Description:') !!}
@@ -31,7 +37,7 @@
 <!-- Price Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('price', 'Price:') !!}
-    {!! Form::number('price', null, ['class' => 'form-control', 'step' => '0.1', 'min' => '0']) !!}
+    {!! Form::number('price', null, ['class' => 'form-control', 'step' => '0.01', 'min' => '0']) !!}
 </div>
 
 <!-- Submit Field -->

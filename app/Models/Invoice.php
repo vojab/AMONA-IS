@@ -29,7 +29,8 @@ class Invoice extends Model
         'description',
         'customer_id',
         'tax_id',
-        'discount'
+        'discount',
+        'date'
     ];
 
     /**
@@ -44,7 +45,8 @@ class Invoice extends Model
         'description' => 'string',
         'customer_id' => 'integer',
         'tax_id' => 'integer',
-        'discount' => 'float'
+        'discount' => 'float',
+        'date' => 'date'
     ];
 
     /**
@@ -59,6 +61,7 @@ class Invoice extends Model
         'customer_id' => 'integer',
         'tax_id' => 'integer',
         'discount' => 'digits_between:0,100',
+        'date' => 'date',
     ];
 
     public function invoiceItems()

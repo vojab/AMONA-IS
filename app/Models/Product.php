@@ -27,6 +27,7 @@ class Product extends BaseModel
         'uuid',
         'code',
         'name',
+        'french_name',
         'description',
         'unit',
         'price'
@@ -42,6 +43,7 @@ class Product extends BaseModel
         'uuid' => 'string',
         'code' => 'string',
         'name' => 'string',
+        'french_name' => 'string',
         'description' => 'string',
         'unit' => 'string',
         'price' => 'float'
@@ -54,9 +56,10 @@ class Product extends BaseModel
      */
     public static $rules = [
         'uuid' => 'required',
-        'code' => 'required|alpha_dash|max:24',
+        'code' => 'required|alpha_dash|max:24|unique:product,code',
         'name' => 'required|string|max:255',
-        'description' => 'string||max:255|nullable',
+        'french_name' => 'string|max:255',
+        'description' => 'string|max:255|nullable',
         'unit' => 'string',
         'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
     ];

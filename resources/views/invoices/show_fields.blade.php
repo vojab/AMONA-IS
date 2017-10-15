@@ -42,6 +42,12 @@
 
 <!-- Created At Field -->
 <div class="form-group">
+    {!! Form::label('date', 'Invoice Date:') !!}
+    <p>{!! $invoice->date !!}</p>
+</div>
+
+<!-- Created At Field -->
+<div class="form-group">
     {!! Form::label('created_at', 'Created At:') !!}
     <p>{!! $invoice->created_at !!}</p>
 </div>

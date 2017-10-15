@@ -79,7 +79,8 @@ class InvoiceDataTable extends DataTable
             'description' => ['name' => 'description', 'data' => 'description'],
             'customer_id' => ['name' => 'customer_id', 'data' => 'customer_id'],
             'tax_id' => ['name' => 'tax_id', 'data' => 'tax_id'],
-            'discount' => ['name' => 'discount', 'data' => 'discount']
+            'discount' => ['name' => 'discount', 'data' => 'discount'],
+            'date' => ['name' => 'date', 'data' => 'date']
         ];
     }
 
