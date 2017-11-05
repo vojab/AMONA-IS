@@ -86,6 +86,8 @@ return [
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
+    "invoice_item_quantity" => "There is no enough goods in warehouse for this quantity.",
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

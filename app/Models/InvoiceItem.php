@@ -57,7 +57,7 @@ class InvoiceItem extends Model
         'uuid' => 'required',
         'invoice_id' => 'required|integer',
         'product_id' => 'required|integer',
-        'quantity' => 'required|numeric|min:1',
+        'quantity' => 'required|numeric|min:1|invoice_item_quantity',
         'price' => 'required|regex:/^\d*(\.\d{1,2})?$/',
     ];
 
